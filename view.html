@@ -1,0 +1,19 @@
+ <!DOCTYPE>
+ <html>
+ <head>
+ <title>House Example</title>
+ </head>
+ <body>
+
+	<div data-bind="with: house">
+	    <p>House Number: <span data-bind="text: number"></span></p>
+  		<!-- ko foreach: residents -->
+		<p>Name: <span data-bind="text: $data.name"></span> <span data-bind="click: $parent.remove.bind($root, $data)">X</span></p>
+	    <!-- /ko --> 
+	</div>
+
+
+ <script src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
+ <script src="viewmodel.js"></script>
+ </body>
+ </html>
