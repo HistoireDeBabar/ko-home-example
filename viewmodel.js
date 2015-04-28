@@ -1,9 +1,9 @@
 var SC = SC || [];
 
 SC.viewModel = {
-    house: ko.observable({
-        number: ko.observable(0),
-        residents: ko.observableArray([]),
+    house_: ko.observable({
+        number_: ko.observable(0),
+        residents_: ko.observableArray([]),
         remove: function(resident){
 		//from residents from resident
  		}

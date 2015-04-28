@@ -5,10 +5,10 @@
  </head>
  <body>
 
-	<div data-bind="with: house">
-	    <p>House Number: <span data-bind="text: number"></span></p>
-  		<!-- ko foreach: residents -->
-		<p>Name: <span data-bind="text: $data.name"></span> <span data-bind="click: $parent.remove.bind($root, $data)">X</span></p>
+	<div data-bind="with: house_">
+	    <p>House Number: <span data-bind="text: number_"></span></p>
+  		<!-- ko foreach: residents_ -->
+		<p>Name: <span data-bind="text: $data.name_"></span> <span data-bind="click: $parent.remove.bind($parent, $data)">X</span></p>
 	    <!-- /ko --> 
 	</div>
 
