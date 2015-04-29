@@ -1,19 +1,16 @@
-var SC = SC || {};
+require(["knockout-3.3.0", "houseBuilder"], function(ko, houseBuilder) {
 
-require(["knockout-3.3.0", "resident"], function(ko, resident) {
-
-    SC.viewModel = {
-	    house_: ko.observable({
-	        number_: ko.observable(1),
-	        residents_: ko.observableArray(resident.loadResidents() || []),
-	        remove: function(resident){
-				this.residents_.remove(resident);
-			}
-
-    	})
+    viewModel = {
+	    house_: houseBuilder.build(data)
 	}
 
-	ko.applyBindings(SC.viewModel);
+	ko.applyBindings(viewModel);
 
 });
 
+var data = {
+	number : 4,
+	residents : [
+	{name : 'paul'},{name: 'anth'},{name:'kourosh'},{name:'si'}
+	]
+}
