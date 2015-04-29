@@ -1,7 +1,7 @@
 require(["knockout-3.3.0", "houseBuilder"], function(ko, houseBuilder) {
 
     viewModel = {
-	    house_: houseBuilder.build(data)
+	    house: houseBuilder.build(data)
 	}
 
 	ko.applyBindings(viewModel);

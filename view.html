@@ -6,7 +6,7 @@
  </head>
  <body>
 
-	<div data-bind="with: house_">
+	<div data-bind="with: house">
 	    <p>House Number: <span data-bind="text: number_"></span></p>
   		<!-- ko foreach: residents_ -->
 		<p>Name: <span data-bind="text: $data.name_"></span> <span data-bind="click: $parent.remove.bind($parent, $data)">X</span></p>
