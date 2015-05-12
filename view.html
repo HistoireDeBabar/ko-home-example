@@ -14,5 +14,17 @@
 	</div>
 
 
+	<div data-bind="with: house">
+		<p>Add new Resident to house</p>
+		<input type="text" data-bind="value: newName_" />
+		<button data-bind="click: add">Add Resident</button>
+	</div>
+
+	<div data-bind="with: house">
+		<p>Change number</p>
+		<input type="number" data-bind="value: newNumber_" />
+		<button data-bind="click: saveNumber"> Save Number</button>
+	</div>
+
  </body>
  </html>
