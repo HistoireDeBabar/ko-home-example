@@ -1,1 +1,2 @@
-A viewmodel which demonstrates how to use some of knockouts basic data-binding attributes, as well as native observableArray functions.  Introduces a modular pattern for object creation and functionality by using require.js.
+Expands the previous branch example to include some of the more 'advanced' features including custom bindings and extender methods.
+
