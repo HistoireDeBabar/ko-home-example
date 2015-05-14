@@ -2,29 +2,43 @@
  <html>
  <head>
  <title>House Example</title>
+
  <script data-main="scripts/viewmodel" src="scripts/require.js"></script>
+ <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="home.css">
  </head>
  <body>
+ 	<div class="box" data-bind="with: house">
+ 		<h1>House Details</h1><span class="icon house"></span>
+		<div>
+		    <p>House Number: <span data-bind="text: number_"></span></p>
+		    <div class="residents">
+		    <h2>Residents</h2>
+	  		<!-- ko foreach: residents_ -->
+			<p><span data-bind="text: $data.name_"></span> <span class="icon remove" data-bind="click: $parent.remove.bind($parent, $data)"></span></p>
+		    <!-- /ko --> 
+			</div>
+		</div>
 
-	<div data-bind="with: house">
-	    <p>House Number: <span data-bind="text: number_"></span></p>
-  		<!-- ko foreach: residents_ -->
-		<p>Name: <span data-bind="text: $data.name_"></span> <span data-bind="click: $parent.remove.bind($parent, $data)">X</span></p>
-	    <!-- /ko --> 
-	</div>
+ 	</div>
+
+ 	<div class="box input" data-bind="with: house">
+ 		<h2>Edit Details</h2>
+		<div>
+			<p>Add new Resident to house</p>
+			<input type="text" data-bind="value: newName_" />
+			<button data-bind="click: add">Add Resident</button>
+		</div>
+
+		<div>
+			<p>Change number</p>
+			<input type="number" data-bind="value: newNumber_, validate: newNumber_, className: 'error'" />
+			<button data-bind="click: saveNumber"> Save Number</button>
+		</div>
+
+ 	</div>
 
 
-	<div data-bind="with: house">
-		<p>Add new Resident to house</p>
-		<input type="text" data-bind="value: newName_" />
-		<button data-bind="click: add">Add Resident</button>
-	</div>
-
-	<div data-bind="with: house">
-		<p>Change number</p>
-		<input type="number" data-bind="value: newNumber_" />
-		<button data-bind="click: saveNumber"> Save Number</button>
-	</div>
 
  </body>
  </html>

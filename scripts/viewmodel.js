@@ -1,4 +1,4 @@
-require(["knockout-3.3.0", "houseBuilder"], function(ko, houseBuilder) {
+require(["knockout-3.3.0", "houseBuilder", "validationBinding"], function(ko, houseBuilder) {
 
     viewModel = {
 	    house: houseBuilder.build(data)

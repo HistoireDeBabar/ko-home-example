@@ -1,10 +1,10 @@
-define(["knockout-3.3.0", "resident"], function(ko, resident) {
+define(["knockout-3.3.0", "resident", "extender"], function(ko, resident) {
 
     var House = function(number, residents){
     	this.number_ = ko.observable(number || 0);
     	this.residents_ = ko.observableArray(residents || []);
         this.newName_ = ko.observable("");
-        this.newNumber_ = ko.observable(0);
+        this.newNumber_ = ko.observable(0).extend({targetIsGreaterThanOption : 0, targetIsEven : true});
     }
 
     House.prototype.remove = function(resident) {
@@ -17,7 +17,9 @@ define(["knockout-3.3.0", "resident"], function(ko, resident) {
     };
 
     House.prototype.saveNumber = function(){
-        this.number_(this.newNumber_());
+        if(!this.newNumber_.hasError()) {
+            this.number_(this.newNumber_());
+        }
     }
 
 
