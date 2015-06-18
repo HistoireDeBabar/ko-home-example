@@ -104,7 +104,7 @@ for (var i in residents_){
 
 The data-binding Knockout provides out of the box is extensive for common functionality and data models.  In the examples above we have not created every possible binding.  However, the upcoming chapters and examples will make use of other common attributes.  What we have provided is a clear way in which we intend to use data-bindings to manipulate our models and objects.  Other common bindings to be aware of are; options , visible , css and checked among all that have been previously mentioned. 
 ```
-*checkout** ko-02*
+checkout ko-02
 ```
 The second checkout is a big jump in how our code is structured.  We have moved the code to use require.js to show a modular example.  However, other than a couple of new implementations, the Knockout hasn’t introduced new conventions or patterns.
 ```html
@@ -246,7 +246,7 @@ checkout ko-03
 ```
 ---------
 
-####### The Final Round
+###### The Final Round
 
 ---------
 
