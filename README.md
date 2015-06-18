@@ -241,11 +241,11 @@ To see a full version of the validation
 ```
 checkout ko-03
 ```
-----------
+---------
 
-##### The Final Round*
+####### The Final Round
 
--------
+---------
 
 This document has aimed to achieve a brief description of Knockout.js and the functionality it provides.  The examples provided are both basic, yet sufficient enough replicate how Knockout can be used to manipulate models over DOM manipulation.
 
