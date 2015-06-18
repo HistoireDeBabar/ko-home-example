@@ -18,7 +18,7 @@ Throughout the document, code snippets will be shown for greater clarification r
 
 Access to the full code is available through git:
 ```
-git clone [https](https://github.com/HistoireDeBabar/ko-home-example.git)[://github.com/HistoireDeBabar/ko-home-example.git](https://github.com/HistoireDeBabar/ko-home-example.git)
+git clone https://github.com/HistoireDeBabar/ko-home-example.git
 
 cd ko-home-example
 
