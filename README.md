@@ -5,6 +5,7 @@
 A lightweight Javascript library that makes creating interactive user interfaces fast and simple.
 
 Knockout JS provides a two-way binding between HTML Markup and Javascript. This functionality provides a means to create dynamic and intuitive web applications that focus upon user interaction and experience.  Or, as Steven Sanderson states "[Knockout] makes it easier to create rich, desktop-like user interfaces with Javascript and HTML" (Sanderson, 2010). 
+
 ----------
 
 #### Keeping it Clean
@@ -71,6 +72,7 @@ When implementing data-binding in the DOM we are declaring that a property shoul
     <!-- /ko -->
 </div>
 ```
+
 Firstly we can see that the example has presumed some extra values and functions.  Namely, that our objects within our residents will have an observable property called name.  For the time being, let us assume that we have programmed that functionality already.
 
 In this small and simple example we are actually demonstrating a lot of data-bindings.  To begin with, to bind the data we must use the ‘data-bind=""’ attribute on our desired html element.  next is the binding attribute of the data-bind.  Knockout comes with a lot of out of the box  functionality, in this example we can see we are using with, text, foreach and click. However, they are many more including, but not limited to;  value, if and ifnot.  Furthermore, as we will see in later chapters, adding our own custom data-binding is not only good practice, but also easy to implement. 
@@ -112,6 +114,7 @@ The second checkout is a big jump in how our code is structured.  We have moved 
 		<button data-bind="click: saveNumber"> Save Number</button>
 	</div>
 ```
+
 The snippet above highlights the use of value.  We can see that we’re not binding to ‘number_’ but ‘newNumber_’.  The reason for this is to have an intermediate stage to editing the data in our model.  The saveNumber function simply pushes the newNumber_ value into the number_ property.  This is a fairly common pattern to prevent accidently replacing the data in our model.
 
 ---------
@@ -190,6 +193,7 @@ We declare custom bindings in the view, exactly the same way we declare standard
 data-bind="customBinding: observable_"
 
 For this example we’re using a custom binding validate that will be used to call the observables hasError function and apply a css class to the element is id bound too.
+
 ```javascript
    ko.bindingHandlers.validate = {
         update: function(element, valueAccessor, allBindings) {
@@ -205,6 +209,7 @@ For this example we’re using a custom binding validate that will be used to ca
         }
     };
 ```
+
 Firstly, we notice that we don’t have an init function.  This is simply because we don’t need one.  We don’t wish to add any state to this binding, as we don’t want to validate the observable until the value has been changed.  The parameters included are also the only ones we need.  The allBindings parameter is a very useful argument to define generic methods without enforcing your viewModel to have specific properties of functions.  In this example, it is used to allow users to pass in a class name to apply to the element.  The validation binding then determines whether an observable has has an error then applies (or removed) a class to the element if necessary.
 
 In the DOM this binding looks like:
@@ -217,11 +222,13 @@ In the example we’re stilling using the Knockout value binding, with our own v
 *Computed Observables*
 
 The final piece of the validation jigsaw is the Computed Observable.  Computed Observables, as with extenders, and custom bindings, are also very useful outside the scope of validation.  A Computed Observable is simply an observable which is built from one or many others.  Thus a popular ‘hello, world!’ example is:
+
 ```javascript
 this.fullName_ = ko.pureComputed(function() {
 	return this.firstName_() + " " + this.secondName_();
 }, this);
 ```
+
 this allows us to create custom ‘wrapper’ observables for commonly used values.  We use a computed observable  in the DOM exactly the same as a normal observable.
 
 pureComputed is the superior brother of the computed function which is only available in Knockout 3.2.0 and should only be used when the method is *pure*. That is when the computed observable doesn’t try to modify state, depend upon ‘hidden’ components, or cause side effects.  the pureComputed method is preferable as it it reduces computation overhead and prevents memory leaks.
