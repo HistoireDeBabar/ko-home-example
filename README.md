@@ -31,7 +31,7 @@ git checkout ko-01
 
 --------
 
-An **Observable **can take the form of any property on a viewmodel that is required editable.  This includes simple properties, lists and objects. To declare an observable you simply use the ko.observable function, or ko.observableArray in the case of arrays.  Take the following:
+An **Observable** can take the form of any property on a viewmodel that is required editable.  This includes simple properties, lists and objects. To declare an observable you simply use the ko.observable function, or ko.observableArray in the case of arrays.  Take the following:
 ```javascript
 viewModel = {
     house_: ko.observable({
@@ -75,23 +75,23 @@ When implementing data-binding in the DOM we are declaring that a property shoul
 
 Firstly we can see that the example has presumed some extra values and functions.  Namely, that our objects within our residents will have an observable property called name.  For the time being, let us assume that we have programmed that functionality already.
 
-In this small and simple example we are actually demonstrating a lot of data-bindings.  To begin with, to bind the data we must use the ‘data-bind=""’ attribute on our desired html element.  next is the binding attribute of the data-bind.  Knockout comes with a lot of out of the box  functionality, in this example we can see we are using with, text, foreach and click. However, they are many more including, but not limited to;  value, if and ifnot.  Furthermore, as we will see in later chapters, adding our own custom data-binding is not only good practice, but also easy to implement. 
+In this small and simple example we are actually demonstrating a lot of data-bindings.  To begin with, to bind the data we must use the ```data-bind=""``` attribute on our desired html element.  next is the binding attribute of the data-bind.  Knockout comes with a lot of out of the box  functionality, in this example we can see we are using with, text, foreach and click. However, they are many more including, but not limited to;  value, if and ifnot.  Furthermore, as we will see in later chapters, adding our own custom data-binding is not only good practice, but also easy to implement. 
 
-By enlarge data-binding is done through attaching the data-bind attribute to html tags.  However, we can also see from the example an alternative comment-based syntax.  Initially it may seem that this simply clutters our view, or attaches too much logic within the html document.  However, from extensive use of knockout we have came to the conclusion that comment based syntax can be clearer to understand and also begins to separate the view model from the view itself.  Comment based syntax is commonly used with the foreach, if and ifnot bindings.  However, it can also be used in other cases too.  It’s advantages are that it is simple to understand, and simple to spot.  In some cases the comment based syntax isn’t strictly needed when used with for-loops, for example if the element is a natural parent - e.g. a <ul> or <tr> tag.  However, instead of multiple implementations of the same data-binding, we have decided to primarily use comment based syntax.  Another advantage to the comment based syntax is that it does not bind the logic to an html element.  Thus, allowing us to the elements if needed, giving us added flexibility and clarity.
+By enlarge data-binding is done through attaching the data-bind attribute to html tags.  However, we can also see from the example an alternative comment-based syntax.  Initially it may seem that this simply clutters our view, or attaches too much logic within the html document.  However, from extensive use of knockout we have came to the conclusion that comment based syntax can be clearer to understand and also begins to separate the view model from the view itself.  Comment based syntax is commonly used with the foreach, if and ifnot bindings.  However, it can also be used in other cases too.  It’s advantages are that it is simple to understand, and simple to spot.  In some cases the comment based syntax isn’t strictly needed when used with for-loops, for example if the element is a natural parent - e.g. a ```<ul>``` or ```<tr>``` tag.  However, instead of multiple implementations of the same data-binding, we have decided to primarily use comment based syntax.  Another advantage to the comment based syntax is that it does not bind the logic to an html element.  Thus, allowing us to the elements if needed, giving us added flexibility and clarity.
 
-The with binding allows us to compartmentalise our html to reflect specific sections of our viewmodel.  In the example we have a div that will contain the manipulation of our house object.  Not only does the with binding encapsulate the modular object, but it also makes our code cleaner.  If we did not use the with binding, all of our properties would look like the following data-bind="text: house.number".  In most cases using with is almost always a better as it ensures we are working within context to the object we are working on.
+The with binding allows us to compartmentalise our html to reflect specific sections of our viewmodel.  In the example we have a div that will contain the manipulation of our house object.  Not only does the with binding encapsulate the modular object, but it also makes our code cleaner.  If we did not use the with binding, all of our properties would look like the following ```data-bind="text: house.number"```.  In most cases using with is almost always a better as it ensures we are working within context to the object we are working on.
 
 The text data-binding is a basic binding that simply displays the attribute with the value of the property. The value data binding is a way to edit that property which can be used in input tags.  
 
-Click events in html can be triggered (or listened for) through various implementations.  Similar to how it’s possible use the html onclick attribute, or register a jquery event listener.  Knockout is designed to work alongside other frameworks nicely, so it would be possible to use with a jQuery click event (thus hiding the data-binding in the DOM completely).   However, this method relies upon on a class or id object and lead into a discussion about DOM manipulation vs View Model manipulation.  Nonetheless, we wish to standardise the way in which we are calling functions and events from our HTML which will provide the most loosely coupled view and viewmodel.  Therefore we are using the click attribute Knockout provides to bind to a function on the viewmodel.  Our click example is passing in a parameter, thus we need to use the function.bind(context, args) syntax.  The args can be anything you wish, in our case it is a ‘resident’ object of our residents array and we pass it in using the $data scope keyword.  The context parameter is what context this will be in the scope of the function.  In this case, we want it to be the house object.  If we do not wish to pass in arguments we do not need to include parenthesis.  A sudo example would be data-bind="click: function". 
+Click events in html can be triggered (or listened for) through various implementations.  Similar to how it’s possible use the html onclick attribute, or register a jquery event listener.  Knockout is designed to work alongside other frameworks nicely, so it would be possible to use with a jQuery click event (thus hiding the data-binding in the DOM completely).  Nonetheless, we wish to standardise the way in which we are calling functions and events from our HTML which will provide the most loosely coupled view and viewmodel.  Therefore we are using the click attribute Knockout provides to bind to a function on the viewmodel.  Our click example is passing in a parameter, thus we need to use the function.bind(context, args) syntax.  The args can be anything you wish, in our case it is a ‘resident’ object of our residents array and we pass it in using the $data scope keyword.  The context parameter is what context this will be in the scope of the function.  In this case, we want it to be the house object.  If we do not wish to pass in arguments we do not need to include parenthesis.  A sudo example would be data-bind="click: function". 
 
-When binding to any property or function we must take into consideration the scope we are presently in.  The three common scoping calls are $root, $parent and $data.  The later two are present in our basic example.  
+When binding to any property or function we must take into consideration the scope we are presently in.  The three common scoping calls are ```$root```, ```$parent``` and ```$data```.  The later two are present in our basic example.  
 
-* $root is to whatever object we apply our bindings too.  Therefore it is our top most level, our root, from which everything else belongs too.  It provides simple and easy navigation to the correct embedded objects and can be used like an absolute path from the viewmodel.
+* ```$root``` is to whatever object we apply our bindings too.  Therefore it is our top most level, our root, from which everything else belongs too.  It provides simple and easy navigation to the correct embedded objects and can be used like an absolute path from the viewmodel.
 
-* $parent can be used to specify a direct parent object of the current context.  The parent relates to the DOM and the context which it is being called from.  In the example above we are using parent to escape the for-loop ($data) context and call a method from the home object context.  The $parent scope also provides another reason for us to use the with binding.  If our example did not include the with statement, the $parent of the for-loop would pass to the viewmodel itself, not the house object.  By using with and the scoping keywords we are providing clarity to the current context.
+* ```$parent``` can be used to specify a direct parent object of the current context.  The parent relates to the DOM and the context which it is being called from.  In the example above we are using parent to escape the for-loop (```$data```) context and call a method from the home object context.  The ```$parent``` scope also provides another reason for us to use the with binding.  If our example did not include the with statement, the ```$parent``` of the for-loop would pass to the viewmodel itself, not the house object.  By using with and the scoping keywords we are providing clarity to the current context.
 
-* $data is the current context.  It is often not required, however, can be spotted within the context of a for loop.  $data is implied and not needed to access properties of that object, however it can be clearer to use it.  In the example above we have used it to pass as an argument in our function parameter, and to access a property.  The simplest way to conceptually explain $data is through association.  Below, the variable resident what the key word $data represents.  Thus, the $data refers to an instance of an object within the loop.
+* ```$data``` is the current context.  It is often not required, however, can be spotted within the context of a for loop.  ```$data``` is implied and not needed to access properties of that object, however it can be clearer to use it.  In the example above we have used it to pass as an argument in our function parameter, and to access a property.  The simplest way to conceptually explain $data is through association.  Below, the variable resident what the key word ```$data``` represents.  Thus, the ```$data``` refers to an instance of an object within the loop.
 
 ```javascript
 for (var i in residents_){
@@ -106,7 +106,7 @@ The data-binding Knockout provides out of the box is extensive for common functi
 ```
 *checkout** ko-02*
 ```
-The second checkout is a big jump in how our code is structured.  We have moved the code to use require.js to show a modular example. This is inline with how we aim to write the V2 portal.  However, other than a couple of new implementations, the Knockout hasn’t introduced new conventions or patterns.
+The second checkout is a big jump in how our code is structured.  We have moved the code to use require.js to show a modular example.  However, other than a couple of new implementations, the Knockout hasn’t introduced new conventions or patterns.
 ```html
 	<div data-bind="with: house_">
 		<p>Change number</p>
@@ -137,14 +137,16 @@ To define an extension method we must add a new function to the ko.extenders obj
 above we are declaring a new function to the extenders and are passing in two parameters, the target (observable this extension will be attached to) and an option.  The option can vary in each case.  In this example it will be used to verify that the target is greater than a specified number (the option).
 
 Before looking at the implementation and how we can use this to validate a property, we’ll quickly show the syntax for attaching the extender to an observable.
+
 ```javascript
 this.newNumber_ = ko.observable(0).extend({targetIsGreaterThanOption : 0});
 ```
+
 Above shows how simple it is to extend and attach the extension to a specific instance of an observable.
 
-The extenders allow us to augment behaviour of an observable, as well as supply additional features to them.  Thus, through using extenders we can add a hasError() method.  Now we can call newNumber_.hasError() and be returned a boolean value.  
+The extenders allow us to augment behaviour of an observable, as well as supply additional features to them.  Thus, through using extenders we can add a ```hasError()``` method.  Now we can call ```newNumber_.hasError()``` and be returned a boolean value.  
 
-The example below shows the full implementation method of the targetIsGreaterThanOption method used to attach and verify whether or not the observable has an error.
+The example below shows the full implementation method of the ```targetIsGreaterThanOption``` method used to attach and verify whether or not the observable has an error.
 ```javascript
      ko.extenders.targetIsGreaterThanOption = function(target, option){
         target.hasError = ko.observable();
@@ -159,7 +161,7 @@ The example below shows the full implementation method of the targetIsGreaterTha
         return target;
     };
 ```
-Firstly, we’re attaching a new property to the observable (hasError), we then declare our validate method.  Following the implementation of our validation method we want to tell Knockout to run it every time the value of the specified observable changes.  We can do this with the in-built subscribe function of an observable.  
+Firstly, we’re attaching a new property to the observable (```hasError```), we then declare our validate method.  Following the implementation of our validation method we want to tell Knockout to run it every time the value of the specified observable changes.  We can do this with the in-built subscribe function of an observable.  
 
 We’re then calling the validate function, before finally returning the target.
 
@@ -182,17 +184,18 @@ We define our custom handler with the following syntax:
 
 };
 ```
-Similar to the extenders we are attaching ‘something’ to a knockout object.  In this case to the bindingHandlers object.  However unlike the extenders (where we attached a function) we are adding a new object which contains two functions init and update.  The object doesn’t actually need both functions, and both functions don’t need all of the parameters.  Therefore we can pick and choose the required ones for each instance.  We’re going to add a validate custom binding to tell knockout to call the new hasError function of our  observable.
+Similar to the extenders we are attaching ‘something’ to a knockout object.  In this case to the ```bindingHandlers``` object.  However unlike the extenders (where we attached a function) we are adding a new object which contains two functions init and update.  The object doesn’t actually need both functions, and both functions don’t need all of the parameters.  Therefore we can pick and choose the required ones for each instance.  We’re going to add a validate custom binding to tell knockout to call the new hasError function of our observable.
 
-The init method is called once for each time the binding is used in the DOM.  The reasons for the init method are two fold.  Firstly, to instantiate any requirements or state to the observable, and also to register event handlers for when the DOM element changes (not the observable, or the value within it).
+The ```init``` method is called once for each time the binding is used in the DOM.  The reasons for the init method are two fold.  Firstly, to instantiate any requirements or state to the observable, and also to register event handlers for when the DOM element changes (not the observable, or the value within it).
 
-The update method is called when the value of the observable changes.  To track this change, and bring the observable into the function we must use the valueAccessor parameter.  We can then unwrap the observable to access its current value.
+The ```update``` method is called when the value of the observable changes.  To track this change, and bring the observable into the function we must use the ```valueAccessor``` parameter.  We can then unwrap the observable to access its current value.
 
 We declare custom bindings in the view, exactly the same way we declare standard bindings:
-
+```
 data-bind="customBinding: observable_"
+```
 
-For this example we’re using a custom binding validate that will be used to call the observables hasError function and apply a css class to the element is id bound too.
+For this example we’re using a custom binding validate that will be used to call the observables ```hasError``` function and apply a css class to the element is id bound too.
 
 ```javascript
    ko.bindingHandlers.validate = {
@@ -233,9 +236,9 @@ this allows us to create custom ‘wrapper’ observables for commonly used valu
 
 pureComputed is the superior brother of the computed function which is only available in Knockout 3.2.0 and should only be used when the method is *pure*. That is when the computed observable doesn’t try to modify state, depend upon ‘hidden’ components, or cause side effects.  the pureComputed method is preferable as it it reduces computation overhead and prevents memory leaks.
 
-The second argument in the pureComputed function is the scope.  This allows us to use ‘this’ within the anonymous function, but still retain the correct scope.
+The second argument in the ```pureComputed``` function is the scope.  This allows us to use ‘this’ within the anonymous function, but still retain the correct scope.
 
-When it’s possible to send a complete model back to the server (or from an editor-model to the ‘true’ model), we have declared an isValid computed observable that simply returns true or false depending upon the hasError extensions which have have bound to our observables.  Owed to the specificity of the isValid function it is better practice to create a computed rather than creating a ‘non-generic’ extender.
+When it’s possible to send a complete model back to the server (or from an editor-model to the ‘true’ model), we have declared an ```isValid``` computed observable that simply returns true or false depending upon the hasError extensions which have have bound to our observables.  Owed to the specificity of the isValid function it is better practice to create a computed rather than creating a ‘non-generic’ extender.
 
 To see a full version of the validation 
 ```
